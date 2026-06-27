@@ -1,0 +1,92 @@
+# WebTesterPro Configuration
+# ==========================
+
+project:
+  name: "WebTesterPro"
+  version: "0.1.0"
+  author: "WebTesterPro Team"
+
+# Crawler Configuration
+crawler:
+  max_depth: 3
+  max_pages: 1000
+  timeout: 30000  # milliseconds
+  delay_min: 1.0  # seconds
+  delay_max: 3.0  # seconds
+  respect_robots_txt: true
+  user_agent: "WebTesterPro/0.1.0 (+https://github.com/webtesterpro)"
+  max_concurrent: 5
+
+  # Blacklist patterns (URLs matching these will be skipped)
+  blacklist:
+    - ".*\\.pdf$"
+    - ".*\\.zip$"
+    - ".*\\.(jpg|jpeg|png|gif|svg|ico)$"
+    - ".*/api/.*"
+    - ".*/admin/.*"
+    - ".*/wp-admin.*"
+    - ".*/wp-login.*"
+    - ".*/private/.*"
+
+  # Allowed domains (empty = all domains)
+  allowed_domains: []
+
+# Scanner Configuration
+scanner:
+  timeout: 30000
+  follow_redirects: true
+  max_redirects: 5
+  verify_ssl: true
+  check_forms: true
+  check_links: true
+  check_resources: true
+  check_accessibility: false
+
+# Analyzer Configuration
+analyzer:
+  check_seo: true
+  check_performance: true
+  check_security_headers: true
+  check_responsive: false
+  lighthouse_enabled: false
+
+# Monitor Configuration
+monitor:
+  interval: 60  # seconds
+  timeout: 10   # seconds
+  retry_count: 3
+  alert_on_down: true
+
+# Login Configuration
+login:
+  method: "form"  # "form" or "cookies"
+  wait_for_selectors:
+    - "#username"
+    - "#password"
+    - "input[name='username']"
+    - "input[name='password']"
+  submit_selectors:
+    - "button[type='submit']"
+    - "input[type='submit']"
+  post_login_wait: 2000  # milliseconds
+
+# Report Configuration
+reports:
+  output_dir: "reports/output"
+  format: "html"  # "html", "json", "markdown"
+  include_screenshots: true
+  include_network_log: false
+  template: "default"
+
+# Logging Configuration
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR, CRITICAL
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/webtesterpro.log"
+  console: true
+
+# Dashboard Configuration
+dashboard:
+  host: "0.0.0.0"
+  port: 8000
+  debug: false

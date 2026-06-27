@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "webtesterpro"
+version = "0.1.0"
+description = "All-in-One Website Testing Tool"
+requires-python = ">=3.9"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.1.1",
+    "pytest-asyncio>=0.23.6",
+    "pytest-cov>=4.1.0",
+]
+
+[project.scripts]
+webtesterpro = "webtesterpro.cli.main:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
